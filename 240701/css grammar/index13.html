@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document13</title>
+    <style>
+      p {
+        counter-increment: rint;
+      }
+      p::before {
+        content: counter(rint);
+      }
+      p::after {
+        content: " - " attr(data-page) " page";
+      }
+      p::first-letter {
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lorem Ipsum</h1>
+    <p data-page="52">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit,
+      eius consequuntur. Iure expedita optio perspiciatis blanditiis. Corrupti
+      sequi possimus quod tenetur! Labore sunt quia dolorum repudiandae ducimus
+      laborum exercitationem vel.
+    </p>
+    <p data-page="273">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
+      necessitatibus, rem veniam magnam blanditiis illo provident commodi
+      aliquid rerum quidem voluptate, laborum excepturi maiores totam beatae
+      maxime laboriosam? Tempore, velit! Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Magni ullam quisquam molestias deserunt libero esse,
+      tenetur amet voluptatibus temporibus, asperiores sunt, voluptates
+      doloribus repudiandae aliquid illo fuga quod at earum.
+    </p>
+  </body>
+</html>

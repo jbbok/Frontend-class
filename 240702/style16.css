@@ -1,0 +1,86 @@
+@import url("./reset16.css");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.gallery {
+  display: flex;
+  height: 100vh;
+  li {
+    border-right: 5px solid #000;
+    flex: 1;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    /* filter: grayscale(1); 모두 그레이필터 넣을 때 여기 */
+    &:last-child {
+      border-right: none;
+    }
+    &:nth-child(1) {
+      background: url(./images/artistic-image-01.jpg) center center no-repeat;
+    }
+    &:nth-child(2) {
+      background: url(./images/artistic-image-02.jpg) center center no-repeat;
+    }
+    &:nth-child(3) {
+      background: url(./images/artistic-image-03.jpg) center center no-repeat;
+    }
+    &:nth-child(4) {
+      background: url(./images/artistic-image-04.jpg) center center no-repeat;
+    }
+    &:nth-child(5) {
+      background: url(./images/artistic-image-05.jpg) center center no-repeat;
+    }
+    &:hover {
+      flex: 3;
+      /* filter: grayscale(0); 선택한거만 그레이필터 빼기 */
+      filter: grayscale(1);
+    }
+    .content {
+      background-color: #000;
+      color: #fff;
+      width: 100%;
+      height: 250px;
+      /* position: absolute;
+      top: 0;
+      left: 0; */
+      padding: 20px;
+      margin-top: 110vh;
+      transition: all 0.5s;
+      position: relative;
+      h2 {
+        position: relative;
+        text-align: center;
+      }
+      p {
+        position: relative;
+        margin: 6px 0;
+        text-align: center;
+      }
+      .sns {
+        text-align: center;
+      }
+      /* position: relative; 지정해줘서 글자를 보이게 해용 */
+      &::before {
+        /* content: "1"; */
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -10px;
+        width: 100%;
+        height: 80px;
+        background-color: #000;
+        transform: rotate(-3deg) scale(1.3);
+        /* 대각선 만드는 방법! */
+      }
+    }
+    &:hover .content {
+      margin-top: 80vh;
+      transition-delay: 0.5s;
+    }
+  }
+}

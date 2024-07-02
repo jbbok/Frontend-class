@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.skill-progress {
+  width: 60%;
+  padding: 50px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 30px;
+  box-shadow: 5p 0 50px rgba(0, 0, 0, 0.4);
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+  .item {
+    article {
+      margin-bottom: 10px;
+      &:first-child {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+    .progress {
+      border: 3px solid #999;
+      border-radius: 50px;
+      padding: 0;
+      .progress-level {
+        height: 30px;
+        border-radius: 30px;
+        background: linear-gradient(to right, #ffe7f3, #fa709a);
+        animation: ani 1s;
+        animation-fill-mode: both;
+      }
+    }
+  }
+}
+
+.skill-progress > .item:nth-of-type(1) .progress-level {
+  width: 90%;
+  animation-delay: 0s;
+}
+
+.skill-progress > .item:nth-of-type(2) .progress-level {
+  width: 85%;
+  animation-delay: 0.2s;
+}
+
+.skill-progress > .item:nth-of-type(3) .progress-level {
+  width: 95%;
+  animation-delay: 0.4s;
+}
+
+.skill-progress > .item:nth-of-type(4) .progress-level {
+  width: 80%;
+  animation-delay: 0.6s;
+}
+
+.skill-progress > .item:nth-of-type(5) .progress-level {
+  width: 90%;
+  animation-delay: 0.8s;
+}
+
+@keyframes ani {
+  0% {
+    width: 0;
+  }
+}
