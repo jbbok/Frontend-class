@@ -1,0 +1,46 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* wrapper */
+#wrapper {
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  height: 100vh;
+  background: url("./img/bg.png") center/cover no-repeat;
+}
+
+/* login */
+#login {
+  position: absolute;
+  top: 20px;
+  right: 60px;
+}
+
+#login input[type="submit"] {
+  font-size: 17px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.9);
+  &:hover {
+    border: 1px solid #fff;
+    color: #000;
+    background: #fff;
+  }
+}
