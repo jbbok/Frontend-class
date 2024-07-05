@@ -25,22 +25,102 @@ a {
   background: url("./img/bg.png") center/cover no-repeat;
 }
 
-/* login */
-#login {
-  position: absolute;
-  top: 20px;
-  right: 60px;
+/* logo */
+#logo {
+  width: 300px;
+  background: url(./img/disney.png) center/cover no-repeat;
 }
 
-#login input[type="submit"] {
-  font-size: 17px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
+/* logon */
+#logon {
+  width: 460px;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 320px auto 50px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+#logon input[type="submit"] {
+  position: absolute;
+  display: block;
+  right: 60px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  padding: 15px 14px;
+  border: 1px solid #fff;
   border-radius: 5px;
   background: rgba(0, 0, 0, 0.9);
+  transition: all 0.3s;
+  text-align: center;
   &:hover {
-    border: 1px solid #fff;
+    border: 1px solid transparent;
     color: #000;
     background: #fff;
+  }
+}
+
+.inner_contents {
+  color: #000;
+  font-size: 16px;
+}
+
+.title {
+  width: 423px;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 22px;
+  color: #fff;
+}
+
+#calendar {
+  display: flex;
+  justify-content: space-around;
+}
+
+select {
+  width: 100px;
+  height: 40px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  padding-left: 20px;
+}
+
+.useremail #email {
+  width: 300px;
+  height: 40px;
+  margin: 10px 0 30px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  &:focus {
+    outline: none;
+  }
+}
+
+.userpassword #password {
+  width: 300px;
+  height: 40px;
+  margin: 10px 0 30px;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+  &:focus {
+    outline: none;
   }
 }
