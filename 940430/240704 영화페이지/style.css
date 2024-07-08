@@ -59,7 +59,7 @@ a {
 .topNav > li > a {
   color: var(--main-gray-color);
 }
-/* / 아무한테도 안준 임의로 지정한 클래스일때 해당 스타일을 적용해라 / */
+/* / 아무한테도 안준 임의로 지정한 클래스일때 해당 스타일을 적용! / */
 /* / :active와 혼돈하지 말것 / */
 .topNav .active {
   color: #eb6ea8;
