@@ -15,7 +15,7 @@
   src: url("./font/EliceDXNeolliOTF-Bold.otf") format("woff");
 }
 
-/* / variable / */
+/* variable */
 :root {
   --main-pink-color: #fd5b95;
   --main-gray1-color: #333;
