@@ -20,7 +20,7 @@ body {
   width: 660px;
   height: 200px;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   border: 1px solid #f00;
   .slides {
     position: absolute;
