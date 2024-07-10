@@ -8,11 +8,16 @@
 }
 @font-face {
   font-family: "Elice1";
-  src: url("./font/EliceDXNeolliOTF-Medium.otf") format("woff");
+  src: url("./font/EliceDXNeolliOTF-Light.otf") format("woff");
 }
 @font-face {
   font-family: "Elice2";
   src: url("./font/EliceDXNeolliOTF-Bold.otf") format("woff");
+}
+
+@font-face {
+  font-family: "Elice3";
+  src: url("./font/EliceDXNeolliOTF-Medium.otf") format("woff");
 }
 
 /* variable */
