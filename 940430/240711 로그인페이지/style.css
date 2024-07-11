@@ -186,13 +186,13 @@ select {
       border-radius: 0 8px 8px 0;
     }
     &.filledA {
-      border: 2px solid #2e429e;
-      background-color: #2e429e;
+      /* border: 2px solid #2e429e; */
+      background-color: #e69d17;
       color: #fff;
     }
     &.filledB {
-      border: 2px solid #2e429e;
-      background-color: #2e429e;
+      /* border: 2px solid #2e429e; */
+      background-color: #e69d17;
       color: #fff;
     }
   }
@@ -212,15 +212,18 @@ select {
   height: 40px;
   border: 1px solid transparent;
   border-radius: 8px;
-  background-color: #2e429e;
+  border: 1px solid #fff;
+  background-color: #e69d17;
   color: #fff;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
   &:hover {
-    /* border: 1px solid #fff; */
+    border: 1px solid #d67200;
     background-color: #fff;
-    color: #2e429e;
+    color: #d67200;
+    font-weight: bold;
   }
 }
 
@@ -240,15 +243,15 @@ footer {
     .inner_item {
       display: flex;
       background-color: #fff;
-      color: #2e429e;
+      color: #d67200;
       width: 200px;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      border: 1px solid #2e429e;
+      border: 1px solid #e69d17;
       border-radius: 8px;
       padding: 10px;
-      transition: all 0.3s;
+      transition: all 0.5s;
       i {
         font-size: 38px;
       }
@@ -260,7 +263,7 @@ footer {
       }
       &:hover {
         cursor: pointer;
-        background-color: #2e429e;
+        background-color: #e69d17;
         color: #fff;
         border: 1px solid #fff;
       }
