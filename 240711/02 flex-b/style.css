@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+il {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background: #eee;
+  header {
+    background: linear-gradient(135deg, #fff 15%, #037ea3 30%);
+    display: flex;
+    padding: 20px;
+
+    .logo {
+      flex: 1;
+    }
+    .gnb {
+      flex: 15;
+      ul {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+      }
+    }
+    .gnb_mobile {
+      display: none;
+    }
+    .sns {
+      flex: 2;
+      text-align: right;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background: transparent;
+        color: #fff6a0;
+      }
+    }
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 780px) {
+  body {
+    header {
+      gap: 10px;
+      background: linear-gradient(to right, #fff 40%, #037ea3 57%);
+    }
+    .gnb {
+      display: none;
+    }
+    .gnb_mobile {
+      /* flex: 15; */
+      background: #037ea3;
+      ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+    }
+    .sns {
+      display: none;
+    }
+    .btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      .line1,
+      .line2,
+      .line3 {
+        border: 0.5px solid #fff;
+        width: 15px;
+      }
+    }
+  }
+}
+}

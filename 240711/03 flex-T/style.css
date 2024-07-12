@@ -1,0 +1,50 @@
+@import url(./reset.css);
+
+header {
+  background: var(--main-bgColor);
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  nav {
+    /* border: 1px solid #fff; */
+    width: 1280px;
+    display: flex;
+    justify-content: space-between;
+    .logo {
+      img {
+        filter: invert();
+      }
+    }
+    .gnb {
+      ul {
+        display: flex;
+        gap: 10px;
+        /* color: #fff; 이렇게 부모요소한테 주지 말고 자식한테 직접 주기!  */
+        li {
+          a {
+            /* 얘가 그 자식 */
+            color: #fff;
+          }
+        }
+      }
+    }
+    .sns {
+      display: flex;
+      gap: 10px;
+      /* flex-start : 플렉스가 시작되어지는 지점을 기준으로 정렬 (웹 모든 그래픽요소 : 좌 → 우) / 오른쪽에 여백잇음 그래서 밀어줘야됨 */
+      text-align: center;
+      /* border: 1px solid #f00; */
+      a {
+        color: #fff;
+      }
+    }
+    .trigger {
+      display: none;
+    }
+  }
+}
+
+/* 780px인 이유 보통 760~ 790 사이로 잡음 */
+@media screen and (max-width: 780px) {
+}
