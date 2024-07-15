@@ -73,23 +73,53 @@ body {
         gap: 40px;
         color: #fff;
         font-family: "Poppins", sans-serif;
-    }
-    .sns {
-      display: none;
-    }
-    .btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-      .line1,
-      .line2,
-      .line3 {
-        border: 0.5px solid #fff;
-        width: 15px;
+      }
+      .sns {
+        display: none;
+      }
+      .btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        .line1,
+        .line2,
+        .line3 {
+          border: 0.5px solid #fff;
+          width: 15px;
+        }
       }
     }
   }
 }
+
+@media screen and (max-width: 780px) {
+  header {
+  }
 }
+
+@media screen and (max-width: 360px) {
+  header {
+    height: auto;
+    nav {
+      width: 100%;
+      flex-direction: column;
+      position: relative;
+      .logo {
+        padding: 10px;
+      }
+      .gnb {
+        
+      }
+    }
+  }
+}
+
+/* 모바일 기준 */
+/* 
+@media screen and (min-width: 780px) {
+}
+
+@media screen and (min-width: 1920px) {
+} */
