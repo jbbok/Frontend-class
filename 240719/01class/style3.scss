@@ -1,0 +1,24 @@
+// 변수!
+// $font-focus: crimson;
+
+$color: (
+  font-primary: #333,
+  font-secondary: #555,
+  font-focus: #999,
+  bg-primary: #ffd0d0,
+  bg-secondary: #e9e9e9,
+);
+
+$headline-font: (largeL 45px, medium: 32px, small: 22px);
+
+body {
+  background: map-get($color, bg-primary);
+  .frame {
+    h1 {
+      color: map-get($color, font-focus);
+    }
+    p {
+      font-size: map-get($headline-font, medium);
+    }
+  }
+}
