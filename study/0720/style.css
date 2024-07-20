@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon_container {
+  border: 1px solid #f00;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  gap: 30px;
+
+  .icon_content1,
+  .icon_content2 {
+    display: flex;
+    gap: 30px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+    background: pink;
+    border-radius: 50%;
+
+    span {
+    }
+  }
+}
