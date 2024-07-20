@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "YClover1";
+  src: url("./font/YClover-Regular.otf") format("woff");
+}
+@font-face {
+  font-family: "YClover2";
+  src: url("./font/YClover-Bold.otf") format("woff");
+}
+@font-face {
+  font-family: "Elice1";
+  src: url("./font/EliceDXNeolliOTF-Light.otf") format("woff");
+}
+@font-face {
+  font-family: "Elice2";
+  src: url("./font/EliceDXNeolliOTF-Bold.otf") format("woff");
+}
+
+/* variable */
+:root {
+  --main-pink-color: #fd5b95;
+  --main-gray1-color: #333;
+  --main-gray2-color: #666;
+  --main-gray3-color: #999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

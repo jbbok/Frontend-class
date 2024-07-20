@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid-m1</title>
+    <style>
+      .parent {
+        border: 1px solid #000;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-areas: "header header header" "img img img" "banner content aside" "footer footer footer";
+        div {
+          border: 1px solid #000;
+          &.header {
+            grid-area: header;
+            background: #c7cc7c;
+          }
+          &.img {
+            grid-area: img;
+          }
+          &.banner {
+            grid-area: banner;
+          }
+          &.content {
+            grid-area: content;
+          }
+          &.aside {
+            grid-area: aside;
+          }
+          &.footer {
+            grid-area: footer;
+            background: #c7cc7c;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div class="header">header</div>
+      <div class="img">
+        <img src="./img/welcome-image.jpg" alt="image" />
+      </div>
+      <div class="banner">banner</div>
+      <div class="content">
+        <h1>This is Main Content</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita
+          tenetur ullam dolores illum aperiam mollitia ducimus cupiditate, odit
+          iusto nemo deleniti rem doloremque temporibus officiis earum harum
+          fugit. Ducimus, mollitia! Quisquam, nesciunt placeat, illo amet natus
+          eligendi eveniet sequi nisi at magni mollitia aut sint! Sint mollitia
+          corporis hic, natus quibusdam excepturi temporibus modi. Laborum saepe
+          sequi natus corporis ratione. Iure quam velit laborum temporibus
+          facilis quo delectus, nisi nam. Veritatis praesentium iusto, vero
+          dolores sequi labore ipsa voluptatibus eius nobis laudantium voluptate
+          temporibus aliquid aliquam. Hic omnis iste eveniet. Ex consectetur nam
+          consequatur atque, possimus omnis quod provident sit pariatur nemo
+          repellat recusandae vel. Consectetur, eum ducimus necessitatibus
+          asperiores iusto odio optio est blanditiis a cupiditate qui molestiae
+          quasi.
+        </p>
+      </div>
+      <div class="aside">aside</div>
+      <div class="footer">footer</div>
+    </div>
+  </body>
+</html>

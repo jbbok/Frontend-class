@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>align-items</title>
+    <style>
+      .parent {
+        border: 5px solid #0f0;
+        /* 교차축에 정렬을 주고자 할 때 height값이 필수 */
+        height: 500px;
+        display: flex;
+        /* justify-content: space-evenly; */
+        /* align-items: flex-end; */
+        div {
+          width: 300px;
+          /* height: 300px; */
+          margin: 10px;
+          background: crimson;
+          &:nth-child(1) {
+            height: 200px;
+          }
+          &:nth-child(3) {
+            height: 400px;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parent">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+    </div>
+  </body>
+</html>

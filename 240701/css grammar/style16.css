@@ -1,0 +1,26 @@
+@import url("./reset16.css");
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.gallery {
+  display: flex;
+  height: 100vh;
+  li {
+    border-right: 5px solid #000;
+    flex: 1;
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+    &:last-child {
+      border-right: none;
+    }
+    &:nth-child(1) {
+      background: url(./);
+    }
+  }
+}

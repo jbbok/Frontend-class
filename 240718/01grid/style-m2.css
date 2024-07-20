@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  grid: 1000px / 650px;
+  grid-template-areas: "title title title" "item1 item2 item3";
+  div {
+  border: 1px solid #000;
+  display: grid;
+  }
+}

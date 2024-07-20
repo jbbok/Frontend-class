@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background: orange;
+        /* transition: width 0.3s, height 0.3s; */
+        /* <벤더 프리픽스> */
+        /* -ms-transition-duration: 0.8s; */
+        /* -moz-transition-duration: 0.8s; */
+        /* -webkit-transition-duration: 0.8s; */
+        /* 원칙적으로 -webkit- 써주는게 맞음 */
+        /* transition-duration: 0.8s; 이렇게 따로 쓰는게 정석 */
+        /* transition-property: width, heghit; 이렇게 따로 쓰는게 정석 */
+        /* transition-delay: 0.3s; 이렇게 따로 쓰는게 정석 */
+        /* transition-timing-function: cubic-bezier(0.51, 1.14, 0.69, -0.04); */
+        transition: background 0.8s ease, width 0.5s ease-out 0.3s;
+        /* 축약해서 쓸 때는 순서가 매우 중요함 */
+        &:hover {
+          width: 200px;
+          height: 300px;
+        }
+        &:active {
+          background: crimson;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- div.box{box} -->
+    <div class="box">box</div>
+  </body>
+</html>
