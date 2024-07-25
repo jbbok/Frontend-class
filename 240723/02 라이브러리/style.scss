@@ -1,0 +1,82 @@
+// reset
+@import "./reset.scss";
+
+// font
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Overpass:ital,wght@0,100..900;1,100..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+// variable
+$color: (
+  main-font-color: #222,
+  main-light-bg: #fff,
+  main-item-border: #ddd,
+  main-red-color: crimson,
+);
+
+// common
+body {
+  font-family: "Montserrat", sans-serif;
+  color: map-get($color, main-font-color);
+  background: map-get($color, main-light-bg);
+  .cd-section {
+    height: 100vh;
+    & > div {
+      height: 100vh;
+      position: relative;
+      .content {
+        background: #ddd;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        width: calc(100% - 40px);
+        height: calc(100% - 80px);
+      }
+    }
+  }
+}
+
+// Awards
+.awards-inner {
+  height: 100%;
+  border: 1px solid $main-item-border;
+  display: flex;
+  & > div {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    &.about-awards {
+      background: #1a1f24;
+      color: $main-light-bg;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .about-heading {
+        text-align: center;
+        .bar {
+          width: 50px;
+          height: 4px;
+          background: map-get($color, main-red-color);
+          border: none;
+          margin: 30px auto;
+        }
+        p {
+          color: #999;
+          font: 400 17px/1.5rem "Montserrat", sans-serif;
+          margin-bottom: 30px;
+        }
+        .view-awards {
+          color: map-get($color, main-item-border);
+          border: 1px solid map-get($color, main-item-border);
+          border-radius: 20px;
+          padding: 5px 15px;
+          transition: all 0.5s;
+          &:hover {
+            color: map-get($color, main-light-bg);
+            background: #31c0ce;
+            border: 1px solid transparent;
+          }
+        }
+      }
+    }
+  }
+}
