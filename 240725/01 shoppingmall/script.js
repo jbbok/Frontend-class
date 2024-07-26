@@ -2,7 +2,8 @@
 
 // console.log(product.data[0].img);
 
-const productInfo = "./products.json";
+const productInfo =
+  "https://my-json-server.typicode.com/jbbok/oliveyoung-fake/db";
 //외부에서 데이터를 불러올 때 사용하는 함수
 fetch(productInfo)
   .then((response) => response.json())
@@ -66,6 +67,15 @@ fetch(productInfo)
       div.append(h3, span);
       li.append(img, div);
       ul.appendChild(li);
+
+      li.addEventListener("click", () => {
+        // console.log("click");
+        // window.location.href = "https://www.naver.com";
+        const url = `product-detail.html?category=${
+          product.category
+        }=&name=${encodeURIComponent(product.name)}`;
+        window.location.href = url; // a 태그 안 씀! url로 함
+      });
     };
 
     // Important Items
@@ -86,8 +96,8 @@ fetch(productInfo)
       // console.log("click");
       // 정렬된 배열을 담을 변수
       const myProducts = products.data.sort((a, b) => {
-        // return a.id - b.id; //오름차순
-        return b.id - a.id; //내림차순
+        return a.id - b.id; //오름차순
+        // return b.id - a.id; //내림차순
       });
 
       removeItems();
@@ -195,3 +205,42 @@ fetch(productInfo)
   .catch((error) => {
     console.log(error);
   });
+
+(function () {
+  var w = window;
+  if (w.ChannelIO) {
+    return w.console.error("ChannelIO script included twice.");
+  }
+  var ch = function () {
+    ch.c(arguments);
+  };
+  ch.q = [];
+  ch.c = function (args) {
+    ch.q.push(args);
+  };
+  w.ChannelIO = ch;
+  function l() {
+    if (w.ChannelIOInitialized) {
+      return;
+    }
+    w.ChannelIOInitialized = true;
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://cdn.channel.io/plugin/ch-plugin-web.js";
+    var x = document.getElementsByTagName("script")[0];
+    if (x.parentNode) {
+      x.parentNode.insertBefore(s, x);
+    }
+  }
+  if (document.readyState === "complete") {
+    l();
+  } else {
+    w.addEventListener("DOMContentLoaded", l);
+    w.addEventListener("load", l);
+  }
+})();
+
+ChannelIO("boot", {
+  pluginKey: "9cdced9f-0384-4807-962a-0efc66264be0",
+});
