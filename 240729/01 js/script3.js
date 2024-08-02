@@ -4,7 +4,7 @@
 // 위 3개의 값이 10,000원 이하라면 "예산관리 잘하셨어요!"
 
 const traffic = Number(prompt("사용한 교통비를 알려주세요", "ex.2,000원"));
-const eat = Number(prompt("사용한 식비를 알려주세요", "ex.5,000원"));
+const eat = Number(prompt("사용한 식비를 알려주세요", "ex.5,000원"));git push origin “브랜치명”
 const cafe = Number(prompt("사용한 음료비를 알려주세요", "ex.2,500원"));
 
 const total = traffic + eat + cafe;
