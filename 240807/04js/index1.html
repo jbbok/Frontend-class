@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script1.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        margin: 100px;
+        .container {
+          width: 1200px;
+          .heading {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+            align-items: center;
+            .desc {
+              width: 70%;
+              p {
+                margin: 20px 0;
+              }
+            }
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="heading">
+        <div class="img">
+          <img
+            style="width: 300px"
+            src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/da9e7bb9-a664-4019-960b-89c65d6315f4/%EC%97%90%EC%96%B4-%ED%8F%AC%EC%8A%A4-1-07-%EB%82%A8%EC%84%B1-%EC%8B%A0%EB%B0%9C-myEZB1jL.png"
+            alt="nike"
+          />
+        </div>
+        <div class="desc">
+          <h1>상품설명</h1>
+          <h2>상품명 : 나이키 G.T. 허슬 3 EP 일렉트릭</h2>
+          <p>
+            이중 스택 줌에어 유닉이 막강한 파워를 제공하고 동기성 좋은 갑피가
+            안정성과 시원함을 유지해줍니다.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam quis
+            expedita sequi fugit! Placeat obcaecati culpa itaque officiis quos
+            temporibus ab ex, odio error voluptates tenetur vitae iure facere
+            iste? Voluptatem amet facere hic corporis quasi quidem saepe
+            distinctio dolorum tenetur tempora culpa.
+          </p>
+          <button id="order">상품주문하기</button>
+        </div>
+      </div>
+      <div class="orderInfo"></div>
+    </div>
+  </body>
+</html>
