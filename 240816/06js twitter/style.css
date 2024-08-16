@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("https://i.pinimg.com/736x/24/62/09/246209d8f51ebcfc94f3b9381f2acf61.jpg") center/cover no-repeat;
+}
+body main {
+  width: 960px;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}
+body main #tweetTextArea {
+  width: 100%;
+  height: 80%;
+  resize: none;
+  border: none;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 10px;
+  padding-left: 10px;
+  font-size: 24px;
+}
+body main #tweetTextArea:focus {
+  outline: none;
+}
+body main #tweetButton {
+  font-size: 22px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  transition: background 0.3s color 0.3s;
+}
+body main #tweetButton:hover {
+  background: #000;
+  color: #fff;
+}
