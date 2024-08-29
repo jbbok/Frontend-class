@@ -1,5 +1,8 @@
 import api from "./env.js";
 
+const form = document.querySelector("form");
+// console.log(form);
+
 const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api.API_KEY}&language=ko&page=1`;
 
 // const createBlock = (movie) => {
@@ -9,6 +12,9 @@ const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api.API_KEY}&l
 const movieDetail = (e) => {
   // console.log(e.target.parentElement);
   const { id } = e.target.parentElement;
+  // console.log(e.target.parentElement.id);
+  // console.log(id);
+
   const detailURL = `https://www.themoviedb.org/movie/${id}`;
   window.open(detailURL, "_blank");
 };
@@ -58,3 +64,37 @@ fetch(url)
       createBlock(movie);
     });
   });
+
+const removeAll = () => {
+  const movies = document.querySelectorAll(".movie");
+  movies.forEach((movie) => {
+    movie.remove();
+  });
+};
+
+const searchMovie = (e) => {
+  e.preventDefault();
+  // console.log("event");
+
+  const input = document.querySelector("input");
+  // console.log(input.value);
+  // const { value } = input;
+  // console.log(value);
+  const { value: keyword } = input;
+  // console.log(keyword);
+  const searchURL = `https://api.themoviedb.org/3/search/movie?api_key=${api.API_KEY}&query=${keyword}&include_adult=false&language=ko&page=1`;
+
+  if (keyword) {
+    removeAll();
+    fetch(searchURL)
+      .then((response) => response.json())
+      // .then((result) => console.log(result.results));
+      .then(({ results }) =>
+        results.forEach((movie) => {
+          createBlock(movie);
+        })
+      );
+  }
+};
+
+form.addEventListener("submit", searchMovie);

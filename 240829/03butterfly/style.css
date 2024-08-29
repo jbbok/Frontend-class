@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  height: 300vh;
+}
+body h1 {
+  color: #fff;
+  font-size: 30px;
+  padding: 20px;
+}
+body .box {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .box img {
+  width: 100%;
+}
