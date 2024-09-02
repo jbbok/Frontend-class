@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 외부에서 가져온 커스텀 먼저 쓰기! -->
+    <script src="./anime.js"></script>
+    <script defer src="./script.js"></script>
+    <title>240902 anime3</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        .circle {
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          &.circle1 {
+            background: khaki;
+          }
+          &.circle2 {
+            background: powderblue;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+  </body>
+</html>

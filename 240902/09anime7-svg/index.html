@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 외부에서 가져온 커스텀 먼저 쓰기! -->
+    <script src="./anime.js"></script>
+    <script defer src="./script.js"></script>
+    <title>240902 anime7 고래svg</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+
+      section {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg, #fffece, plum, #5059d8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        .circle {
+          position: absolute;
+          top: calc(50% - 365px);
+          left: calc(50% - 505px);
+          width: 15px;
+          height: 15px;
+          background: #fff;
+          border-radius: 50%;
+        }
+        .eye {
+          position: absolute;
+          right: calc(50% + 400px);
+          bottom: calc(50% - 120px);
+          width: 30px;
+          height: 30px;
+          background: #fff;
+          border-radius: 50%;
+          /* transform: rotate(100deg); */
+          animation: ani 1s ease-in-out infinite alternate;
+        }
+        svg {
+          fill: none;
+          stroke: #fff;
+          stroke-width: 3;
+          width: 1000px;
+        }
+      }
+
+      @keyframes ani {
+        0% {
+          height: 20px;
+          transform: skew(0deg);
+        }
+        100% {
+          height: 10px;
+          transform: skew(-30deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="circle"></div>
+      <div class="eye"></div>
+      <svg class="svg" viewBox="0 0 966 690">
+        <path
+          d="M147.5 186.5C-50.9 340.9 -5.83332 485.167 41.5 538C47.3819 545.2 46.9508 561 46 568C45.6667 577.5 47.2 599.8 56 613C67 629.5 92.5 605 99.5 589.5C105.1 577.1 148.833 506.333 170 472.5C176.833 463.333 194.8 447.7 212 458.5C233.5 472 281 481 320.5 468.5C360 456 395.5 405 399.5 394C403.5 383 391 390.5 370.5 394C354.1 396.8 344 397.5 341 397.5C294.6 384.7 297.667 369.833 305 364C334.333 349.667 418.1 326.5 518.5 348.5C618.9 370.5 730 484.667 773 539C696.2 589.8 702.333 659.833 715 688.5C724.2 663.3 753.167 652 766.5 649.5C808.5 635.1 824 610.5 826.5 600C838.5 614.8 868.833 611.5 882.5 608C920.9 608.8 953.167 623.333 964.5 630.5C926.9 526.1 841.833 513 804 519.5C731.5 327.5 641 241.5 557.5 186.5C474 131.5 421.5 133 409.5 111.5C397.5 90 429 43 437.5 30C444.3 19.6 445.667 10 445.5 6.50001C427 -8.49999 372 9.50001 346 30C325.2 46.4 286 91.1667 269 111.5C229.4 133.9 171.5 170.833 147.5 186.5Z"
+        />
+      </svg>
+    </section>
+  </body>
+</html>
