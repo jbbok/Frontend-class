@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import Header from "./component/Header";
 import TodoEditor from "./component/TodoEditor";
 import TodoList from "./component/TodoList";
+import TestComp from "./component/TestComp";
 
 const mockTodo = [
   {
@@ -42,11 +43,24 @@ function App() {
     idRef.current += 1;
   };
 
+  const onUpdate = (targetId) => {
+    setTodo(
+      todo.map((it) =>
+        it.id === targetId ? { ...it, isDone: !it.isDone } : it
+      )
+    );
+  };
+
+  const onDelete = (targetId) => {
+    setTodo(todo.filter((it) => it.id !== targetId));
+  };
+
   return (
     <div className="App">
+      <TestComp />
       <Header />
       <TodoEditor onCreate={onCreate} />
-      <TodoList />
+      <TodoList todo={todo} onUpdate={onUpdate} onDelete={onDelete} />
     </div>
   );
 }

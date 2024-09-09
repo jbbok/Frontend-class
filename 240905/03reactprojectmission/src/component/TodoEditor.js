@@ -1,7 +1,7 @@
-import React, { useState, inputRef, onSubmit } from "react";
+import React, { useState } from "react";
 import "./TodoEditor.css";
 
-const TodoEditor = ({ onCreate }) => {
+const TodoEditor = ({ onCreate, onSubmit, inputRef }) => {
   // console.log(onCreate);
   const [content, setContent] = useState("");
   const onChangeContent = (e) => {
