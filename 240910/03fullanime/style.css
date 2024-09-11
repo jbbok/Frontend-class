@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "back to Black";
+  src: url("./font/Back_to_Black_Demo.otf"), url("./font/Back_to_Black_Demo.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -233,8 +237,45 @@ nav ul li a {
 .section#sec3 {
   background-image: linear-gradient(to top, #c7a6ee 0%, #a6c1ee 100%);
 }
+.section#sec3 h1 {
+  font-family: "back to Black";
+  font-size: 100px;
+  color: #fff;
+  letter-spacing: -3px;
+  transform: translateX(-100px);
+  position: relative;
+  z-index: 2;
+}
+.section#sec3 h1 span {
+  opacity: 0;
+}
+.section#sec3 .sec3_svg {
+  fill: #c7a6ee;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
 .section#sec4 {
   background-image: linear-gradient(to top, #fecfef 0%, #c7a6ee 100%);
+}
+.section#sec4 img {
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+.section#sec4 .img_wrap {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.section#sec4 .img_wrap .tail {
+  background: #fecfef;
+  width: 5%;
+  height: 5%;
 }
 .section .inner {
   width: 1200px;
@@ -243,7 +284,6 @@ nav ul li a {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #fff;
 }
 
 #fp-nav ul li a span {

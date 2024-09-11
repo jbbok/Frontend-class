@@ -1,20 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import PostList from "../list/PostList";
 import Button from "../ui/Button";
+import PostList from "../list/PostList";
 import data from "../../data.json";
-
 const Wrapper = styled.div`
   width: calc(100% - 32px);
-  border: 1px solid #ccc;
-  margin: 0 auto;
-  padding: 16px;
+  // border: 1px solid #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 16px;
+  margin: 0 auto;
 `;
-
 const Container = styled.div`
   width: 100%;
   max-width: 720px;
@@ -22,13 +20,10 @@ const Container = styled.div`
     margin-bottom: 16px;
   }
 `;
-
 const MainPage = () => {
   const navigate = useNavigate();
-  // console.log(Navigate);
   return (
     <Wrapper>
-      {/* <div>MainPage</div> */}
       <Container>
         <Button
           title="글 작성하기"
@@ -36,11 +31,14 @@ const MainPage = () => {
             navigate("/post-write");
           }}
         />
-        <PostList posts={data} onClickItem{(item) => navigate(`/post/
-          ${itrem.id}`)} />
+        <PostList
+          posts={data}
+          onClickItem={(item) => {
+            navigate(`/post/${item.id}`);
+          }}
+        />
       </Container>
     </Wrapper>
   );
 };
-
 export default MainPage;
