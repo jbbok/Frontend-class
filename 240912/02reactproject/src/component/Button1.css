@@ -1,0 +1,19 @@
+.Button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.Button_default {
+  background: #fff3cb;
+  color: #666;
+}
+
+.Button_positive {
+  background: #a4dde7;
+  color: #fff;
+}
+
+.Button_negative {
+  background: #eeccee;
+}
