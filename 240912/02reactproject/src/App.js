@@ -1,5 +1,5 @@
 import React, { useReducer, useRef, useEffect, useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -20,12 +20,14 @@ const reducer = (state, action) => {
       return [action.data, ...state];
     }
     case "UPDATE": {
-      return state.map((it) =>
-        String(it.id) === String(action.data.id) ? { ...action.data } : it
+      return state.map((item) =>
+        String(item.id) === String(action.data.id) ? { ...action.data } : item
       );
     }
     case "DELETE": {
-      return state.filter((it) => String(it.id) !== String(action.targetId));
+      return state.filter(
+        (item) => String(item.id) !== String(action.targetId)
+      );
     }
     default: {
       return state;
@@ -37,35 +39,41 @@ const reducer = (state, action) => {
 const mockData = [
   {
     id: "mock1",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 1,
     content: "mock1",
     emotionId: 1,
   },
+
   {
     id: "mock2",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 2,
     content: "mock2",
     emotionId: 2,
   },
+
   {
     id: "mock3",
-    date: new Date().getTime(),
+    date: new Date().getTime() - 3,
     content: "mock3",
     emotionId: 3,
   },
 ];
 
-export const DiaryDispahch = React.createContext();
+export const DiaryStateContext = React.createContext();
+
+export const DiaryDispatchContext = React.createContext();
 
 const App = () => {
-  const [isDataLoaded, detIsDateLoaed] = useState(false);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
+
   useEffect(() => {
-    difpatch({
+    dispatch({
       type: "INIT", // 초기값})
       data: mockData,
-      setIsDataLoaded
+    });
+    setIsDataLoaded(true);
   }, []);
 
   const onCreate = (date, content, emotionId) => {
@@ -99,25 +107,28 @@ const App = () => {
       targetId,
     });
   };
-  
+
   if (!isDataLoaded) {
     return <div>데이터를 불러오는 중입니다!</div>;
   } else {
     return (
-      <DiaryStateContext.provider value={data}>
-        <DiaryDispahchContext.provider value={{onCreate, onUpdate, onDelete}}>
+      <DiaryStateContext.Provider value={data}>
+        <DiaryDispatchContext.Provider value={{ onCreate, onDelete, onUpdate }}>
           <Wrapper>
             <Routes>
               <Route path="/" element={<Home />} />
+
               <Route path="/new" element={<New />} />
+
               <Route path="/diary/:id" element={<Diary />} />
-              <Route path="/edit" element={<Edit />} />
+
+              <Route path="/edit/:id" element={<Edit />} />
             </Routes>
           </Wrapper>
-        </DiaryDispahchContext.provider>
-      </DiaryStateContext.provider>
+        </DiaryDispatchContext.Provider>
+      </DiaryStateContext.Provider>
     );
-  };
-
+  }
+};
 
 export default App;

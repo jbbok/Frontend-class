@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const LeftChild = styled.div``;
 
 const Title = styled.div`
-  font-size: 25px;
+  font-size: 22px;
 `;
 const RightChild = styled.div``;
 

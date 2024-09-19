@@ -8,7 +8,7 @@ import { getFormattedDate, emotionList } from "../util";
 const EditorSection = styled.div`
   margin-bottom: 40px;
   & h4 {
-    font-size: 22px;
+    font-size: 18px;
   }
 `;
 
@@ -17,8 +17,8 @@ const Textarea = styled.textarea`
   background: #ececec;
   border-radius: 5px;
   padding: 20px;
-  font-size: 20px;
-  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  font-family: "Gowun Dodum", sans-serif;
   width: 100%;
   min-height: 200px;
   resize: none;
@@ -29,8 +29,8 @@ const Input = styled.input`
   border-radius: 5px;
   background: #ececec;
   padding: 20px;
-  font-size: 20px;
-  font-family: "Nanum Pen Script", cursive;
+  font-size: 18px;
+  font-family: "Gowun Dodum", sans-serif;
   cursor: pointer;
 `;
 

@@ -36,27 +36,47 @@ export const getFormattedDate = (targetDate) => {
 export const emotionList = [
   {
     id: 1,
-    name: "완전좋음",
+    // name: "완전좋음",
     img: getEmotionImgById(1),
   },
   {
     id: 2,
-    name: "좋음",
+    // name: "좋음",
     img: getEmotionImgById(2),
   },
   {
     id: 3,
-    name: "그럭저럭",
+    // name: "그럭저럭",
     img: getEmotionImgById(3),
   },
   {
     id: 4,
-    name: "나쁨",
+    // name: "나쁨",
     img: getEmotionImgById(4),
   },
   {
     id: 5,
-    name: "완전나쁨",
+    // name: "완전나쁨",
     img: getEmotionImgById(5),
   },
 ];
+
+export const getMonthRangeByDate = (date) => {
+  const beginTimeStamp = new Date(
+    date.getFullYear(), //년
+    date.getMonth(), //월
+    1, //일
+    0, //시
+    0, //분
+    0 //초
+  ).getTime();
+  const endTimeStamp = new Date(
+    date.getFullYear(),
+    date.getMonth() + 1,
+    0,
+    23,
+    59,
+    59
+  ).getTime();
+  return { beginTimeStamp, endTimeStamp };
+};

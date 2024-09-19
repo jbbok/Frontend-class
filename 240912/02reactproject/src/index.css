@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Orbit&display=swap");
 
 html,
 body {
   margin: 0;
-  font-family: "Nanum Pen Script", cursive;
+  font-family: "Gowun Dodum", sans-serif;
   width: 100%;
   background: #f6f6f6;
   display: flex;
