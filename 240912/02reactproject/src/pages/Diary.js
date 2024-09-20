@@ -10,7 +10,7 @@ const Diary = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const data = useDiary(id);
-  console.log(data);
+  // console.log(data);
   if (!data) {
     return <div>일기를 불러오고 있습니다...</div>;
   } else {
@@ -23,10 +23,10 @@ const Diary = () => {
     };
 
     const { date, emotionId, content } = data; // 객체
-    console.log(data);
-    console.log(date, emotionId);
+    // console.log(data);
+    // console.log(date, emotionId);
     const title = `${getFormattedDate(new Date(parseInt(date)))} 기록`;
-    console.log(title);
+    // console.log(title);
     return (
       <div>
         <Header
@@ -34,7 +34,7 @@ const Diary = () => {
           title={title}
           rightChild={<Button text={"수정하기"} onClick={goEdit} />}
         />
-        <Viewer />
+        <Viewer content={content} emotionId={emotionId} />
       </div>
     );
   }

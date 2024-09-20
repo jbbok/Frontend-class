@@ -17,7 +17,7 @@ const Textarea = styled.textarea`
   background: #ececec;
   border-radius: 5px;
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Gowun Dodum", sans-serif;
   width: 100%;
   min-height: 200px;
@@ -29,7 +29,7 @@ const Input = styled.input`
   border-radius: 5px;
   background: #ececec;
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "Gowun Dodum", sans-serif;
   cursor: pointer;
 `;
@@ -124,8 +124,8 @@ const Editor = ({ initData, onSubmit }) => {
       </EditorSection>
       <EditorSection>
         <Buttongroup>
-          <Button type={""} title={"취소하기"} onClick={handelGoBack} />
-          <Button type={"positive"} title={"작성완료"} onClick={handleSubmit} />
+          <Button type={""} text={"취소하기"} onClick={handelGoBack} />
+          <Button type={"positive"} text={"작성완료"} onClick={handleSubmit} />
         </Buttongroup>
       </EditorSection>
     </div>

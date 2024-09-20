@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const EmotionContent = styled.div`
   cursor: pointer;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -15,7 +15,7 @@ const EmotionContent = styled.div`
     margin-bottom: 10px;
   }
   & span {
-    font-size: 18px;
+    font-size: 14px;
   }
   &.EmotionItem_off {
     background: #ececec;
