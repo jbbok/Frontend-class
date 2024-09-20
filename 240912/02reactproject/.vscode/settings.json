@@ -1,0 +1,7 @@
+{
+  "git.useForcePushIfIncludes": true,
+  "search.quickOpen.includeSymbols": false,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  }
+}

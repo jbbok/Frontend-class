@@ -1,5 +1,6 @@
 import React, { useReducer, useRef, useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import GlobalStyles from "./styles/GlobalStyles.styles";
 import styled from "styled-components";
 import Home from "./pages/Home";
 import New from "./pages/New";
@@ -9,6 +10,8 @@ import { type } from "@testing-library/user-event/dist/type";
 
 const Wrapper = styled.div`
   padding: 20px;
+  height: 100vh;
+  background: var(--primary-color);
 `;
 
 const reducer = (state, action) => {
@@ -112,21 +115,26 @@ const App = () => {
     return <div>데이터를 불러오는 중입니다!</div>;
   } else {
     return (
-      <DiaryStateContext.Provider value={data}>
-        <DiaryDispatchContext.Provider value={{ onCreate, onDelete, onUpdate }}>
-          <Wrapper>
-            <Routes>
-              <Route path="/" element={<Home />} />
+      <>
+        <GlobalStyles />
+        <DiaryStateContext.Provider value={data}>
+          <DiaryDispatchContext.Provider
+            value={{ onCreate, onDelete, onUpdate }}
+          >
+            <Wrapper>
+              <Routes>
+                <Route path="/" element={<Home />} />
 
-              <Route path="/new" element={<New />} />
+                <Route path="/new" element={<New />} />
 
-              <Route path="/diary/:id" element={<Diary />} />
+                <Route path="/diary/:id" element={<Diary />} />
 
-              <Route path="/edit/:id" element={<Edit />} />
-            </Routes>
-          </Wrapper>
-        </DiaryDispatchContext.Provider>
-      </DiaryStateContext.Provider>
+                <Route path="/edit/:id" element={<Edit />} />
+              </Routes>
+            </Wrapper>
+          </DiaryDispatchContext.Provider>
+        </DiaryStateContext.Provider>
+      </>
     );
   }
 };
