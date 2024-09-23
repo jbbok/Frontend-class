@@ -29,7 +29,6 @@ export const getFormattedDate = (targetDate) => {
 
   if (month < 10) month = `0${month}`;
   if (date < 10) date = `0${date}`;
-
   return `${year}-${month}-${date}`;
 };
 
@@ -56,19 +55,19 @@ export const emotionList = [
   },
   {
     id: 5,
-    name: "완전나쁨",
+    name: "끔찍함",
     img: getEmotionImgById(5),
   },
 ];
 
 export const getMonthRangeByDate = (date) => {
   const beginTimeStamp = new Date(
-    date.getFullYear(), //년
-    date.getMonth(), //월
-    1, //일
-    0, //시
-    0, //분
-    0 //초
+    date.getFullYear(),
+    date.getMonth(),
+    1,
+    0,
+    0,
+    0
   ).getTime();
   const endTimeStamp = new Date(
     date.getFullYear(),
@@ -83,6 +82,5 @@ export const getMonthRangeByDate = (date) => {
 
 export const setPageTitle = (title) => {
   const titleElement = document.getElementsByTagName("title")[0];
-  //[0] : 배열의 형태로 값을 찾아오고 있기 때문에! 몇 번째인지 지칭해줘야 함!
   titleElement.innerText = title;
 };

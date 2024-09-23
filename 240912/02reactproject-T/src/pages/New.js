@@ -8,10 +8,9 @@ import { setPageTitle } from "../util";
 
 const New = () => {
   useEffect(() => {
-    setPageTitle("새 일기 쓰기");
+    setPageTitle("New Diary");
   }, []);
   const { onCreate } = useContext(DiaryDispatchContext);
-  // console.log(onCreate);
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -30,7 +29,7 @@ const New = () => {
   return (
     <div>
       <Header
-        leftChild={<Button text={"< 뒤로 가기"} onClick={goBack} />}
+        leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
         title={"새 일기 쓰기"}
         rightChild={<Button text={"Home >"} onClick={goHome} />}
       />

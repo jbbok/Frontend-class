@@ -1,12 +1,11 @@
 import React, { useReducer, useRef, useEffect, useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import GlobalStyles from "./styles/GlobalStyles.styles";
 import styled from "styled-components";
 import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
-import { type } from "@testing-library/user-event/dist/type";
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -25,15 +24,15 @@ const reducer = (state, action) => {
       return newState;
     }
     case "UPDATE": {
-      const newState = state.map((item) =>
-        String(item.id) === String(action.data.id) ? { ...action.data } : item
+      const newState = state.map((it) =>
+        String(it.id) === String(action.data.id) ? { ...action.data } : it
       );
       localStorage.setItem("diary", JSON.stringify(newState));
       return newState;
     }
     case "DELETE": {
       const newState = state.filter(
-        (item) => String(item.id) !== String(action.targetId)
+        (it) => String(it.id) !== String(action.targetId)
       );
       localStorage.setItem("diary", JSON.stringify(newState));
       return newState;
@@ -42,7 +41,6 @@ const reducer = (state, action) => {
       return state;
     }
   }
-  return state;
 };
 
 // const mockData = [
@@ -52,14 +50,12 @@ const reducer = (state, action) => {
 //     content: "mock1",
 //     emotionId: 1,
 //   },
-
 //   {
 //     id: "mock2",
 //     date: new Date().getTime() - 2,
 //     content: "mock2",
 //     emotionId: 2,
 //   },
-
 //   {
 //     id: "mock3",
 //     date: new Date().getTime() - 3,
@@ -69,14 +65,12 @@ const reducer = (state, action) => {
 // ];
 
 export const DiaryStateContext = React.createContext();
-
 export const DiaryDispatchContext = React.createContext();
 
 const App = () => {
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [data, dispatch] = useReducer(reducer, []);
   const idRef = useRef(0);
-
   useEffect(() => {
     const rawData = localStorage.getItem("diary");
     if (!rawData) {
@@ -89,13 +83,12 @@ const App = () => {
       return;
     }
     localData.sort((a, b) => Number(b.id) - Number(a.id));
-    //로컬스토리지 갓다왔으니 형변환!!!
     idRef.current = localData[0].id + 1;
     dispatch({
       type: "INIT",
       data: localData,
     });
-    setIsDataLoaded(true); //실제 데이터값 가져오고 끝~
+    setIsDataLoaded(true);
   }, []);
 
   const onCreate = (date, content, emotionId) => {
@@ -104,8 +97,8 @@ const App = () => {
       data: {
         id: idRef.current,
         date: new Date(date).getTime(),
-        content: content, // content 라고만 써도 됨
-        emotionId: emotionId, // 마찬가지! value 값이 같기 때문에!
+        content,
+        emotionId,
       },
     });
     idRef.current += 1;
@@ -138,7 +131,7 @@ const App = () => {
         <GlobalStyles />
         <DiaryStateContext.Provider value={data}>
           <DiaryDispatchContext.Provider
-            value={{ onCreate, onDelete, onUpdate }}
+            value={{ onCreate, onUpdate, onDelete }}
           >
             <Wrapper>
               <Routes>

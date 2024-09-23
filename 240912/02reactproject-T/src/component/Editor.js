@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Header from "./Header";
 import Button from "./Button";
 import EmotionItem from "./EmotionItem";
 import { getFormattedDate, emotionList } from "../util";
@@ -8,17 +9,17 @@ import { getFormattedDate, emotionList } from "../util";
 const EditorSection = styled.div`
   margin-bottom: 40px;
   & h4 {
-    font-size: 18px;
+    font-size: 22px;
   }
 `;
 
 const Textarea = styled.textarea`
   border: none;
-  background: #ececec;
   border-radius: 5px;
+  background: #ececec;
   padding: 20px;
-  font-size: 16px;
-  font-family: "Gowun Dodum", sans-serif;
+  font-size: 20px;
+  font-family: "Nanum Pen Script", cursive;
   width: 100%;
   min-height: 200px;
   resize: none;
@@ -28,9 +29,9 @@ const Input = styled.input`
   border: none;
   border-radius: 5px;
   background: #ececec;
-  padding: 20px;
-  font-size: 16px;
-  font-family: "Gowun Dodum", sans-serif;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: "Nanum Pen Script", cursive;
   cursor: pointer;
 `;
 
@@ -80,8 +81,8 @@ const Editor = ({ initData, onSubmit }) => {
     onSubmit(state);
   };
 
-  const handelGoBack = () => {
-    navigate(-1); // 바로 직전 페이지로 가겠다
+  const handleGoBack = () => {
+    navigate(-1);
   };
 
   const handleChangeEmotion = useCallback((emotionId) => {
@@ -96,7 +97,7 @@ const Editor = ({ initData, onSubmit }) => {
       <EditorSection>
         <h4>오늘의 날짜</h4>
         <div>
-          <input type="date" value={state.date} onChange={handleChangeDate} />
+          <Input type="date" value={state.date} onChange={handleChangeDate} />
         </div>
       </EditorSection>
       <EditorSection>
@@ -115,7 +116,7 @@ const Editor = ({ initData, onSubmit }) => {
       <EditorSection>
         <h4>오늘의 일기</h4>
         <div>
-          <textarea
+          <Textarea
             placeholder="오늘은 어땠나요?"
             value={state.content}
             onChange={handleChangeContent}
@@ -124,8 +125,8 @@ const Editor = ({ initData, onSubmit }) => {
       </EditorSection>
       <EditorSection>
         <Buttongroup>
-          <Button type={""} text={"취소하기"} onClick={handelGoBack} />
-          <Button type={"positive"} text={"작성완료"} onClick={handleSubmit} />
+          <Button text={"취소하기"} onClick={handleGoBack} />
+          <Button text={"작성완료"} type={"positive"} onClick={handleSubmit} />
         </Buttongroup>
       </EditorSection>
     </div>
@@ -133,5 +134,3 @@ const Editor = ({ initData, onSubmit }) => {
 };
 
 export default Editor;
-
-// 쨘;

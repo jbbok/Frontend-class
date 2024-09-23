@@ -21,24 +21,22 @@ const InfoSection = styled.div`
 `;
 
 const ButtonSection = styled.div`
-  width: 100px;
-  // border: 1px solid #f00;
+  min-width: 70px;
 `;
 
 const DateItem = styled.div`
-  font-size: 18px;
+  font-size: 30px;
   font-weight: bold;
   margin-bottom: 5px;
 `;
 
 const ContentItem = styled.div`
-  font-size: 16px;
+  font-size: 20px;
 `;
 
 const ImgBg = styled.div`
   width: 120px;
   height: 80px;
-  // border: 1px solid #ccc;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -81,7 +79,7 @@ const DiaryItem = ({ id, date, content, emotionId }) => {
         </ImgBg>
       </DiaryContent>
       <InfoSection>
-        <DateItem>{new Date(Number(date)).toLocaleDateString()}</DateItem>
+        <DateItem>{new Date(parseInt(date)).toLocaleDateString()}</DateItem>
         <ContentItem>{content.slice(0, 25)}</ContentItem>
       </InfoSection>
       <ButtonSection>

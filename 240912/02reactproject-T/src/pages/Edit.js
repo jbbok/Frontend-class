@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { DiaryDispatchContext } from "../App";
 import Header from "../component/Header";
 import Button from "../component/Button";
@@ -10,11 +10,10 @@ import { setPageTitle } from "../util";
 const Edit = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  // console.log(params);
   const data = useDiary(id);
-  // console.log(data);
+
   useEffect(() => {
-    setPageTitle(`${id}번째 일기 수정하기`);
+    setPageTitle(`${id} Diary Edit`);
   }, []);
 
   const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
@@ -44,7 +43,7 @@ const Edit = () => {
     return (
       <div>
         <Header
-          leftChild={<Button text={"< 뒤로 가기"} onClick={goBack} />}
+          leftChild={<Button text={"< 뒤로가기"} onClick={goBack} />}
           title={"일기 수정하기"}
           rightChild={
             <Button

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const EmotionContent = styled.div`
   cursor: pointer;
-  // border: 1px solid #ccc;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -15,7 +14,7 @@ const EmotionContent = styled.div`
     margin-bottom: 10px;
   }
   & span {
-    font-size: 14px;
+    font-size: 18px;
   }
   &.EmotionItem_off {
     background: #ececec;
@@ -46,7 +45,6 @@ const EmotionItem = ({ id, name, img, onClick, isSelected }) => {
   const handleOnClick = () => {
     onClick(id);
   };
-
   return (
     <EmotionContent
       className={isSelected ? `EmotionItem_on_${id}` : `EmotionItem_off`}
