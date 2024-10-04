@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "react-bootstrap";
-import { ResultData } from "../assets/resultdata";
+import { ResultData } from "../assets/resultData";
+import KakaoShareButton from "../components/KakaoShareButton";
 
 const Wrapper = styled.div`
   display: flex;
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 100vh;
-  color: #fff;
+  color: #2c2c2c;
 `;
 
 const Header = styled.div`
@@ -42,7 +43,16 @@ const LogoImg = styled.div`
 
 const Desc = styled.div`
   margin: 10px 0;
+  padding: 8px 14px;
   font-size: 20px;
+  text-align: center;
+  background: orange;
+  border-radius: 8px;
+`;
+
+const ButtonGroup = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 const Result = () => {
@@ -53,7 +63,7 @@ const Result = () => {
   // console.log(mbti);
   const navigate = useNavigate();
   const handleClickButton = () => {
-    navigate("/home");
+    navigate("/");
   };
   useEffect(() => {
     const result = ResultData.find((s) => s.best === mbti);
@@ -74,7 +84,12 @@ const Result = () => {
           <br />
           🐾 {resultData.best}형 {resultData.name}입니다! 🐈
         </Desc>
-        <Button onClick={handleClickButton}>테스트 다시 시작하기</Button>
+        <ButtonGroup>
+          <Button variant="light" onClick={handleClickButton}>
+            테스트 다시 시작하기
+          </Button>
+          <KakaoShareButton data={resultData} />
+        </ButtonGroup>
       </Contents>
     </Wrapper>
   );

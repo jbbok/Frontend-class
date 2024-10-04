@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "home",
+        path: "",
         element: <Home />,
       },
       {
@@ -52,7 +52,7 @@ a {
 
 body {
   font-family: "SimKyungha";
-  background: url("https://i.pinimg.com/564x/ba/d5/01/bad5015e95b15cc3e2465d89d055f63c.jpg") center/cover no-repeat;
+  background: url("https://cdn.imweb.me/upload/S202207202685e30f16e24/6568a2fcf9606.jpg") center/cover no-repeat;
   height: 100vh;
 }
 `;
