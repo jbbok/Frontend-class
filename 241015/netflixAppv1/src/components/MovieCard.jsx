@@ -71,7 +71,7 @@ const Adult = styled.div`
 const MovieCard = ({ item }) => {
   // console.log(item.poster_path);
   const { genreList } = useSelector((state) => state.movie);
-  console.log(genreList);
+  // console.log(genreList);
   return (
     <Wrapper>
       <Img
