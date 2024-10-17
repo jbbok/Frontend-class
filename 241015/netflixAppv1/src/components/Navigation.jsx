@@ -19,7 +19,7 @@ const BtnItem = styled.span`
 const Navigation = () => {
   return (
     <Navbar bg="dark" variant="dark">
-      <Container fluid>
+      <Container fluid className="inner-item">
         <Navbar.Brand href="#">
           <Logo
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/800px-Netflix_2015_logo.svg.png"
