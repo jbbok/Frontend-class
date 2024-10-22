@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    // 컴파일 될 파일들의 JS버전을 정의 // ESNext : 제일 최신
+    "target": "ESNext",
+    // 컴파일링 될 파일들의 모듈 시스템을 정의
+    "module": "ESNext",
+    // 컴파일링 하고자 하는 파일의 타입을 엄격하게 검사 여부
+    "strict": false, // strict 모드의 빨간색을 없애줌 (검사를 엄격하게 할거냐 안할거냐)
+    // "strict": true, // strict 모드의 빨간색 줄 생김
+    // 타입 지정시, null 타입 사용에 대한 여부
+    "strictNullChecks": false, //(검사를 엄격하게 하지 않겟다)
+    // 타입스크립트 각 파일을 독립적인 모듈로 인식
+    "moduleDetection": "force",
+    // 외부라이브러리를 설치할 때, 타입 지정하고 설치해야 하는데 타입 지정 검사를 생략하고자 할 때 사용!
+    "skipLibCheck": true
+  },
+  // ts-node라는 컴파일러의 모듈을 설정하고자 할 때
+  "ts-node": {
+    "esm": true
+  },
+  // src라는 폴더 안에 있는 파일들을 ts로 컴파일링 하고자 할 때
+  "include": ["src"]
+}
