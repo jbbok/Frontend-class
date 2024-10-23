@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    // "strict": false,
+    "strict": true,
+    "strictNullChecks": false,
+    "moduleDetection": "force", // 전역변수x 지역변수화o
+    "skipLibCheck": false
+  },
+  "ts-mode": {
+    "esm": true
+  }
+}
