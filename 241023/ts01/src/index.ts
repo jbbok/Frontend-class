@@ -66,11 +66,11 @@
 // };
 
 // type User = {};
-// // 전역에서 타입 별칭은 중복선언 불가
+// // 한번 선언되면 재선언 불가 / 전역에서 타입 별칭은 중복선언 불가
 // const fnc = () => {
 //   type User = {};
 // };
-// // 전역이 아닌 지역에서는 재선언 가능!
+// // 전역이 아닌 지역에서는 재선언 가능! but 기본적으로 전역요소로 설정!
 
 // // ------------------------------------------
 
@@ -291,9 +291,9 @@
 
 // ------------------------------------------
 
-const add = (a: number, b: number): number => {
-  return a + b;
-};
+// const add = (a: number, b: number): number => {
+//   return a + b;
+// };
 
 // 함수 시그니처
 // const printMe = (name: string, age: number): void = (name, age) => {
