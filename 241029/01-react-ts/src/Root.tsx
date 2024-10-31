@@ -6,7 +6,6 @@ import { createGlobalStyle } from "styled-components";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 *{
   margin: 0px;
   padding: 0px;
@@ -24,7 +23,6 @@ a {
 }
 
 body {
-  font-family: "Source Sans 3", sans-serif;
   background: ${(props) => props.theme.bgColor};
   color: ${(props) => props.theme.textColor}  
 }`;
@@ -32,7 +30,7 @@ body {
 const App = () => {
   return (
     <>
-      <ThemeProvider theme={lighttheme}>
+      <ThemeProvider theme={darktheme}>
         <GlobalStyle />
         <Outlet />
         <ReactQueryDevtools

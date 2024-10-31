@@ -4,23 +4,14 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 const Container = styled.div`
   margin-top: 10px;
 `;
 
-interface coinHistory {
-  time_open: string;
-  time_close: string;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume: number;
-  market_cap: number;
-}
-
-interface Example {
+interface CoinHistory {
   time_open: number;
   time_close: number;
   open: string;
@@ -32,10 +23,12 @@ interface Example {
 }
 
 const Chart = () => {
+  const isDark = useRecoilValue(isDarkAtom);
   const { coinId } = useParams();
-  const { isLoading, data } = useQuery<coinHistory[]>({
+  const { isLoading, data } = useQuery<CoinHistory[]>({
     queryKey: ["history", coinId],
     queryFn: () => fetchCoinHistory(coinId),
+    refetchInterval: 5000,
   });
 
   const chartData = Array.isArray(data) && data.length > 0 ? data : [];
@@ -51,13 +44,12 @@ const Chart = () => {
           series={[
             {
               name: "Price",
-              data:
-                chartData?.map((price) => parseFloat(price.time_close)) || [],
+              data: chartData.map((price) => parseFloat(price.close)) || [],
             },
           ]}
           options={{
             theme: {
-              mode: "dark",
+              mode: isDark ? "dark" : "light",
             },
             stroke: {
               width: 4,
@@ -67,7 +59,7 @@ const Chart = () => {
               toolbar: {
                 show: true,
               },
-              background: "transparent",
+              background: "linear-gradient(to top, #a29bfe 0%, #ffeaa7 100%)",
             },
             grid: {
               show: true,
@@ -86,21 +78,28 @@ const Chart = () => {
                 style: {
                   fontSize: "12px",
                 },
-                formatter: (value) => value.toFixed(3),
+                formatter: (value) => `${value.toFixed(3)}`,
               },
             },
-            colors: ["#ffeaa7"],
+            colors: ["#f8c727"],
             fill: {
               type: "gradient",
               gradient: {
-                gradientToColors: ["#a29bfe"],
+                gradientToColors: ["#5f56da"],
                 stops: [0, 100],
+              },
+            },
+            tooltip: {
+              y: {
+                title: {
+                  formatter: (value) => `${parseFloat(value).toFixed(10)}`,
+                },
               },
             },
           }}
         />
       ) : (
-        "No Data available .. Please wait"
+        "No Data available to display chart."
       )}
     </Container>
   );
