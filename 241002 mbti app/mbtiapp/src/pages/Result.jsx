@@ -83,6 +83,8 @@ const Result = () => {
           예비 집사님과 찰떡궁합인 고영히는
           <br />
           🐾 {resultData.best}형 {resultData.name}입니다! 🐈
+          <br />
+          {resultData.desc}
         </Desc>
         <ButtonGroup>
           <Button variant="light" onClick={handleClickButton}>
