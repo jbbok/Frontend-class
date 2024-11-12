@@ -22,7 +22,7 @@ class Stack {
   }
 
   isEmpty() {
-    return;
+    return this.list.count === 0;
   }
 }
 

@@ -1,17 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
-import {
-  searchContents,
-  GetMoviesResult,
-  searchGeneres,
-  getReviews,
-} from "../api";
+import { searchContents, GetMoviesResult, searchGeneres } from "../api";
 import styled from "styled-components";
 import { makeImagePath } from "../utils";
 
 const Container = styled.main`
   margin-top: 60px;
   width: 100%;
+  background: ${(props) => props.theme.black.lighter};
   overflow: hidden;
 `;
 
@@ -65,6 +61,7 @@ const MovieDate = styled.div`
     border-radius: 8px;
   }
 `;
+
 const MovieValue = styled.div`
   font-size: 18px;
   width: 50px;
@@ -74,11 +71,13 @@ const MovieValue = styled.div`
   text-align: center;
   line-height: 50px;
 `;
+
 const Genres = styled.div`
   background: #ffa300;
   padding: 10px;
   border-radius: 8px;
 `;
+
 const MovieRate = styled.div`
   font-size: 18px;
   span {
@@ -89,6 +88,7 @@ const MovieRate = styled.div`
     margin-bottom: 8px;
   }
 `;
+
 const RateNumbers = styled.div`
   font-size: 18px;
   span {
@@ -99,23 +99,12 @@ const RateNumbers = styled.div`
     margin-bottom: 8px;
   }
 `;
+
 interface GenresItem {
   id: number;
   name: string;
 }
-interface ReviewContents {
-  author: string;
-  author_details: {
-    name: string;
-    username: string;
-    avatar_path: string;
-    rating: number;
-  };
-  content: string;
-  created_at: string;
-  updates_at: string;
-  url: string;
-}
+
 const Search = () => {
   const { search } = useLocation();
   const keyword = new URLSearchParams(search).get("keyword");
@@ -124,18 +113,14 @@ const Search = () => {
       queryKey: ["multiContents", keyword],
       queryFn: () => searchContents(keyword),
     });
+
   const { data: genreData, isLoading: genreLoading } = useQuery({
     queryKey: ["getGenre"],
     queryFn: searchGeneres,
   });
-  const ids = movieData?.results.map((movie) => movie.id);
-  const { data: reviewData, isLoading: reviewLoading } = useQuery({
-    queryKey: ["getReviews", ids],
-    queryFn: () =>
-      ids ? Promise.all(ids.map((id) => getReviews(id))) : Promise.resolve([]),
-    enabled: !!ids,
-  });
-  console.log(reviewData);
+
+  console.log(movieData, genreData);
+
   return (
     <Container>
       {movieLoading ? (
@@ -181,22 +166,6 @@ const Search = () => {
                   </Genres>
                 </MovieInfo>
               </MovieSection>
-              <div>
-                <h3>:하트2:Movie Reviews:하트2:</h3>
-                {reviewLoading ? (
-                  <div>Review Loading...</div>
-                ) : (
-                  <ul>
-                    {reviewData && reviewData[index].results ? (
-                      reviewData[index].results.map((review: any) => (
-                        <li key={review.id}>{review.content}</li>
-                      ))
-                    ) : (
-                      <li>No Reviews...</li>
-                    )}
-                  </ul>
-                )}
-              </div>
             </SearchBox>
           ))}
         </>

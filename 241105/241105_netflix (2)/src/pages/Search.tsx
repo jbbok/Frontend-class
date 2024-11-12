@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocation } from "react-router-dom";
 import {
@@ -5,9 +6,13 @@ import {
   GetMoviesResult,
   searchGeneres,
   getReviews,
+  getVideos,
+  Movie,
 } from "../api";
 import styled from "styled-components";
 import { makeImagePath } from "../utils";
+import YouTube from "react-youtube";
+import Pagination from "react-js-pagination";
 
 const Container = styled.main`
   margin-top: 60px;
@@ -65,6 +70,7 @@ const MovieDate = styled.div`
     border-radius: 8px;
   }
 `;
+
 const MovieValue = styled.div`
   font-size: 18px;
   width: 50px;
@@ -74,11 +80,13 @@ const MovieValue = styled.div`
   text-align: center;
   line-height: 50px;
 `;
+
 const Genres = styled.div`
   background: #ffa300;
   padding: 10px;
   border-radius: 8px;
 `;
+
 const MovieRate = styled.div`
   font-size: 18px;
   span {
@@ -89,6 +97,7 @@ const MovieRate = styled.div`
     margin-bottom: 8px;
   }
 `;
+
 const RateNumbers = styled.div`
   font-size: 18px;
   span {
@@ -99,10 +108,74 @@ const RateNumbers = styled.div`
     margin-bottom: 8px;
   }
 `;
+
+const ReviewSection = styled.div`
+  background: ${(props) => props.theme.white.darker};
+  color: ${(props) => props.theme.black.lighter};
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  li {
+    padding: 10px;
+  }
+`;
+
+const ReviewAuthor = styled.div`
+  background: ${(props) => props.theme.white.lighter};
+  width: 150px;
+  text-align: center;
+  margin-bottom: 8px;
+  padding: 8px 0;
+  border-radius: 8px;
+`;
+
+const ReviewContent = styled.div`
+  font-size: 14px;
+`;
+
+const VideoSection = styled.div`
+  margin-top: 30px;
+`;
+
+const ImgBox = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid ${(props) => props.theme.black.lighter};
+  border-radius: 8px;
+`;
+
+const StyledPagination = styled.div`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  /* background: crimson; */
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  ul {
+    display: flex;
+    gap: 10px;
+    li {
+      a {
+        display: inline-block;
+        color: ${(props) => props.theme.white.darker};
+        font-size: 20px;
+        transition: color 0.3s;
+        &:hover {
+          color: ${(props) => props.theme.black.darker};
+        }
+      }
+    }
+  }
+`;
+
 interface GenresItem {
   id: number;
   name: string;
 }
+
 interface ReviewContents {
   author: string;
   author_details: {
@@ -113,39 +186,92 @@ interface ReviewContents {
   };
   content: string;
   created_at: string;
+  id: string;
   updates_at: string;
   url: string;
 }
+
+interface VideoContent<T> {
+  [key: number]: T[];
+}
+
 const Search = () => {
   const { search } = useLocation();
   const keyword = new URLSearchParams(search).get("keyword");
+  const [videos, setVideos] = useState<VideoContent<string>>({});
+
   const { data: movieData, isLoading: movieLoading } =
     useQuery<GetMoviesResult>({
       queryKey: ["multiContents", keyword],
       queryFn: () => searchContents(keyword),
     });
+
   const { data: genreData, isLoading: genreLoading } = useQuery({
     queryKey: ["getGenre"],
     queryFn: searchGeneres,
   });
+
   const ids = movieData?.results.map((movie) => movie.id);
+
   const { data: reviewData, isLoading: reviewLoading } = useQuery({
     queryKey: ["getReviews", ids],
     queryFn: () =>
       ids ? Promise.all(ids.map((id) => getReviews(id))) : Promise.resolve([]),
     enabled: !!ids,
   });
-  console.log(reviewData);
+
+  const { data: videoData, isLoading: videoLoading } = useQuery({
+    queryKey: ["getVideos", ids],
+    queryFn: () =>
+      ids ? Promise.all(ids.map((id) => getReviews(id))) : Promise.resolve([]),
+    enabled: !!ids,
+  });
+
+  console.log(videoData);
+
+  useEffect(() => {
+    if (movieData && videoData) {
+      movieData.results.forEach((movie) => {
+        getVideos(movie.id).then((data) => {
+          if (data?.results) {
+            const VideoIds = data.results.map((video: any) => video.key);
+            setVideos((prev) => ({
+              ...prev,
+              [movie.id]: VideoIds,
+            }));
+          }
+        });
+      });
+    }
+  }, [movieData, videoData]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [moviesPerPage, setMoviesPerPage] = useState(2);
+
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+
+  const currentMovies: Movie[] =
+    movieData?.results.slice(indexOfFirstMovie, indexOfLastMovie) || [];
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <Container>
       {movieLoading ? (
         <div>Loading</div>
       ) : (
         <>
-          {movieData?.results.map((movie, index) => (
+          {currentMovies?.map((movie, index) => (
             <SearchBox key={index}>
               <MovieSection>
-                <MovieImg src={makeImagePath(movie.backdrop_path)} />
+                {movie.backdrop_path ? (
+                  <MovieImg src={makeImagePath(movie.backdrop_path)} />
+                ) : (
+                  <div>Ready for Images</div>
+                )}
                 <MovieInfo>
                   <MovieTitle>{movie.original_title} </MovieTitle>
                   <MovieOverview>{movie.overview}</MovieOverview>
@@ -181,24 +307,48 @@ const Search = () => {
                   </Genres>
                 </MovieInfo>
               </MovieSection>
-              <div>
-                <h3>:하트2:Movie Reviews:하트2:</h3>
+              <ReviewSection>
+                <h3> 🍌 Movie Reviews 😎</h3>
                 {reviewLoading ? (
                   <div>Review Loading...</div>
                 ) : (
                   <ul>
                     {reviewData && reviewData[index].results ? (
-                      reviewData[index].results.map((review: any) => (
-                        <li key={review.id}>{review.content}</li>
-                      ))
+                      reviewData[index]?.results.map(
+                        (review: ReviewContents) => (
+                          <li key={review.id}>
+                            <ReviewAuthor>{review.author}</ReviewAuthor>
+                            <ReviewContent>{review.content}</ReviewContent>
+                          </li>
+                        )
+                      )
                     ) : (
                       <li>No Reviews...</li>
                     )}
                   </ul>
                 )}
-              </div>
+              </ReviewSection>
+              <VideoSection>
+                {videos[movie.id]?.length > 0 ? (
+                  <YouTube
+                    videoId={videos[movie.id][0]}
+                    opts={{ width: "100%", height: "800px" }}
+                  />
+                ) : (
+                  <div>"No Available"</div>
+                )}
+              </VideoSection>
             </SearchBox>
           ))}
+          <StyledPagination>
+            <Pagination
+              onChange={handlePageChange}
+              activePage={currentPage}
+              itemsCountPerPage={moviesPerPage}
+              totalItemsCount={movieData?.results.length || 0}
+              pageRangeDisplayed={5}
+            />
+          </StyledPagination>
         </>
       )}
     </Container>
