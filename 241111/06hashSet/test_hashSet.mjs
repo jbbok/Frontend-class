@@ -1,4 +1,4 @@
-import { HashSet } from "./06hashSet/hashSet.mjs";
+import { HashSet } from "./hashSet.mjs";
 
 let hashSet = new HashSet();
 console.log(`isEmpty: ${hashSet.isEmpty()}`);
