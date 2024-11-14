@@ -1,0 +1,16 @@
+/* .h1 {
+  color: slateblue;
+}
+
+.h2 {
+  color: mediumpurple;
+} */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  & h3 {
+    margin-bottom: 0;
+  }
+}
