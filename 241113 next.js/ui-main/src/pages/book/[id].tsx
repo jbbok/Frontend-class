@@ -28,12 +28,10 @@ const Index = () => {
       >
         <img src={coverImgUrl} alt="bookImg" />
       </div>
-      <div>
-        <div className={style.title}>{title}</div>
-        <div className={style.subTitle}>{subTitle}</div>
-        <div className={style.author}>
-          {author} | {publisher}
-        </div>
+      <div className={style.title}>{title}</div>
+      <div className={style.subTitle}>{subTitle}</div>
+      <div className={style.author}>
+        {author} | {publisher}
       </div>
       <div className={style.description}>{description}</div>
     </div>
