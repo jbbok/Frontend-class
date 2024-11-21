@@ -1,8 +1,9 @@
 "use client";
-import React, { ReactNode } from "react";
-import Searchbar from "./searchbar";
 
-const layout = ({ children }: { children: ReactNode }) => {
+import React, { ReactNode } from "react";
+import Searchbar from "../components/searchbar";
+
+const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
       <Searchbar />
@@ -11,4 +12,4 @@ const layout = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default layout;
+export default Layout;

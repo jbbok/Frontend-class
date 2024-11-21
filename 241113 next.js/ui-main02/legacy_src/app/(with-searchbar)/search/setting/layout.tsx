@@ -1,12 +1,9 @@
-"use client";
-
 import React, { ReactNode } from "react";
-import Searchbar from "../../components/searchbar";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   return (
     <div>
-      <Searchbar />
+      <div>세팅헤더</div>
       {children}
     </div>
   );
