@@ -74,4 +74,4 @@ const Home = async () => {
   );
 };
 
-export default Home;
+export default Home;  
