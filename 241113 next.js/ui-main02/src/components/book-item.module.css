@@ -12,7 +12,7 @@
     font-weight: bold;
   }
   .subTitle {
-    word-break: keep-all; /* 한줄로 쓰기 */
+    word-break: keep-all;
   }
   .author {
     color: gray;
