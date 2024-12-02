@@ -4,19 +4,19 @@ import { useRouter } from "next/navigation";
 
 const Searchbar = () => {
   const router = useRouter();
-  const [search, setSearch] = useState("");
+  const [search, setSeach] = useState("");
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    router.push(`/search?q=${search}`);
+    setSeach(e.target.value);
   };
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(`/search?q=${search}`);
+  };
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input type="text" value={search} onChange={onChangeSearch} />
+        <input value={search} type="text" onChange={onChangeSearch} />
         <input type="submit" value="검색" />
       </form>
     </div>
