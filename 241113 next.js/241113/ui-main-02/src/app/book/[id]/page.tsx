@@ -1,6 +1,9 @@
 import React from "react";
 import style from "./page.module.css";
 import { notFound } from "next/navigation";
+import { createReviewAction } from "@/actions/create-review-actions";
+import { ReviewData } from "@/util/types";
+import ReviewItem from "@/components/review-item";
 
 // export const dynamicParams = false;
 
@@ -40,20 +43,13 @@ const Booktail = async ({ bookId }: { bookId: string }) => {
   );
 };
 
-const ReviewEditor = () => {
-  const createReviewAction = async (formData: FormData) => {
-    "use server";
-
-    const content = formData.get("content");
-    const author = formData.get("author");
-    console.log(content, author);
-  };
-
+const ReviewEditor = ({ bookId }: { bookId: string }) => {
   return (
     <section>
-      <form>
-        <input type="text" name="content" placeholder="리뷰내용" />
-        <input type="text" name="author" placeholder="작성자" />
+      <form action={createReviewAction}>
+        <input type="text" name="bookId" value={bookId} hidden />
+        <input type="text" name="content" placeholder="리뷰내용" required />
+        <input type="text" name="author" placeholder="작성자" required />
         <input type="submit" value="작성하기" />
       </form>
     </section>
@@ -64,11 +60,31 @@ export const generateStaticParams = () => {
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
 };
 
+const ReviewList = async ({ bookId }: { bookId: string }) => {
+  const response = await fetch(
+    `${process.env.PUBLIC_API_SERVER_URL}/review/book/${bookId}`
+  );
+
+  if (!response.ok) {
+    throw new Error(`Review fetch failed: ${response.statusText}`);
+  }
+
+  const reviews: ReviewData[] = await response.json();
+  return (
+    <section>
+      {reviews.map((review) => (
+        <ReviewItem key={`review-item-${review.id}`} {...review} />
+      ))}
+    </section>
+  );
+};
+
 const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <div className={style.container}>
       <Booktail bookId={(await params).id} />
-      <ReviewEditor />
+      <ReviewEditor bookId={(await params).id} />
+      <ReviewList bookId={(await params).id} />
     </div>
   );
 };
